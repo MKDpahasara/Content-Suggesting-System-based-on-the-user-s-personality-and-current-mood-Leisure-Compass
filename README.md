@@ -48,4 +48,4 @@ The development of digital media on the internet has transformed entertainment c
 
 #### Step 6: Display recommended content to user
 
-![Screenshot 2024-07-29 121221](https://github.com/user-attachments/assets/3a763efb-e3bd-43fd-8d9f-18d587a537cd)
+![Screenshot 2024-07-29 121539](https://github.com/user-attachments/assets/9e6ca79d-fdf0-492f-8c53-c3c2254a6022)
