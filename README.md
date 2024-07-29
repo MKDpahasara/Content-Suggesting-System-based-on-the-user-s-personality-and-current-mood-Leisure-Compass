@@ -36,15 +36,15 @@ The development of digital media on the internet has transformed entertainment c
 6. Display recommended content to the user for seamless access.
 
 
-# Step 1: Identify user personality
+### Step 1: Identify user personality
 
-# Step 2: Detect user mood using AWS Rekognition
+### Step 2: Detect user mood using AWS Rekognition
 
-# Step 3: Combine mood and personality data
+### Step 3: Combine mood and personality data
 
-# Step 4: Generate personalized recommendations
+### Step 4: Generate personalized recommendations
 
-# Step 5: Retrieve recommended movies and TV shows from TMDB
+### Step 5: Retrieve recommended movies and TV shows from TMDB
 
-# Step 6: Display recommended content to user
+### Step 6: Display recommended content to user
 
