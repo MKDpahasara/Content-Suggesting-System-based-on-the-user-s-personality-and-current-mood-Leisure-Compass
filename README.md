@@ -1,0 +1,2 @@
+# Content-Suggesting-System-based-on-the-user-s-personality-and-current-mood-Leisure-Compass
+Our project aims to improve content recommendation accuracy by integrating user personality and mood analysis. An advanced neural network model achieved 99.31% testing accuracy, initially focusing on movies and TV shows. User feedback confirmed the system's efficacy and provided insights for future improvements.
