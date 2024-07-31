@@ -1,0 +1,268 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>TV Shows</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="static/assets/logo/favicon.png"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="static/assets/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="static/assets/css/linearicons.css">
+
+        <!--flaticon.css-->
+		<link rel="stylesheet" href="static/assets/css/flaticon.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="static/assets/css/animate.css">
+
+        <!--owl.carousel.css-->
+        <link rel="stylesheet" href="static/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="static/assets/css/owl.theme.default.min.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="static/assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="static/assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="static/assets/css/responsive.css">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+	
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+	
+		<!--welcome-hero start -->
+		<section id="Movies" class="welcome-hero">
+
+			<!-- top-area Start -->
+			<div class="top-area">
+				<div class="header-area">
+					<!-- Start Navigation -->
+				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+				        <div class="container">
+
+				            <!-- Start Header Navigation -->
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{{ url_for('index') }}">
+									<img src="static/assets/images/welcome-hero/3.png" alt="Leisure Compass Logo" class="logo">Leisure Compass<span></span></a>
+
+				            </div><!--/.navbar-header-->
+				            <!-- End Header Navigation -->
+
+				            <!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{{ url_for('index') }}">home</a></li>
+									<li class=" scroll"><a href="#" onclick="goBack()">Go Back</a></li>
+				                    <li class="scroll active"><a href="#">TV Series</a></li>
+				                    <li class="scroll"><a href="#contact">contact us</a></li>
+				                
+									<!-- Add profile dropdown button -->
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											{% if current_user.is_authenticated %}
+												<img src="{{ current_user.profile_pic }}" alt="Profile Picture" class="profile-pic" style="width: 30px; height: 30px; border-radius: 50%;"> {{ current_user.name }}
+											{% else %}
+												<i class="fa fa-user"></i> Profile
+											{% endif %}
+										</a>
+										<ul class="dropdown-menu">
+											{% if current_user.is_authenticated %}
+												<li><a href="{{ url_for('logout') }}">Logout</a></li>
+											{% else %}
+												<li><a href="{{ url_for('login') }}">Login</a></li>
+											{% endif %}
+										</ul>
+									</li>
+									
+								</ul><!--/.nav -->
+				            </div><!-- /.navbar-collapse -->
+				            </div><!-- /.navbar-collapse -->
+				        </div><!--/.container-->
+				    </nav><!--/nav-->
+				    <!-- End Navigation -->
+				</div><!--/.header-area-->
+			    <div class="clearfix"></div>
+
+			</div><!-- /.top-area-->
+			<!-- top-area End -->
+		</section>
+		
+		<section id="service" class="service">
+
+			<div id="tags"></div>
+			<div id="myNav" class="overlay">
+		
+				<!-- Button to close the overlay navigation -->
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+				<!-- Overlay content -->
+				<div class="overlay-content" id="overlay-content"></div>
+				
+				<a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a> 
+				
+				<a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow" >&#8658;</a>
+		
+			  </div>
+			  <div id="movieTableContainer"></div>
+			<main id="main"></main>
+			<div class="pagination">
+				<div class="page" id="prev">Previous Page</div>
+				<div class="current" id="current">1</div>
+				<div class="page" id="next">Next Page</div>
+		
+			</div>
+
+		</section><!--/.service-->
+		<!--service end-->
+
+		<footer id="contact"  class="contact">
+			<div class="container">
+				<div class="footer-top">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<div class="footer-logo">
+									<img src="static/assets/images/welcome-hero/3.png" alt="Leisure Compass Logo" class="logo">
+									<a href="templates/index.html">Leisure Compass</a>
+								</div>
+								<p>
+									Content suggesting system based on user's current mood and personality
+								</p>
+								<div class="footer-contact">
+									<a href="mailto:avishkabs@sltc.ac.lk"><p>avishkabs@sltc.ac.lk</p></a><br>
+									<a href="mailto:damindup@sltc.ac.lk"><p>damindup@sltc.ac.lk</p></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<div class="single-footer-widget">
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-12">
+							<div class="single-footer-widget">
+							<h2>Powered by:</h2>
+							<p><img src="static/assets/images/footer/1280px-Tmdb.new.logo.svg.png" alt="TMDB Logo" style="width:150px;height:100px;"></p>
+							<p><img src="static/assets/images/footer/PikPng.com_run-dmc-png_5240809.png" alt="AWS Logo"style="width:170px;height:100px;"></p>
+						</div>
+						</div>
+						<div class="col-md-offset-1 col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<h2>Final Year Project</h2>
+								<img src="static/assets/images/footer/SLTC_Research_University_Logo.png" alt="Leisure Compass Logo" >
+								SLTC Research University<br>
+								Ingiriya Road, Padukka<br>
+								Phone: 0112 100 500<br>
+								<a href="https://www.sltc.ac.lk"><p>www.sltc.ac.lk </p></a>
+								
+								
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<div class="row">
+						<div class="col-sm-6">
+							<p>
+								&copy; 2024 Leisure Compass. All rights reserved..
+							</p><!--/p-->
+						</div>
+						<div class="col-sm-6">
+							&nbsp; Avishka Bandarathilaka &nbsp;
+							<a href="https://www.linkedin.com/in/as-bandarathilaka/" class="social-icon"><i class="fa fa-linkedin"></i></a>
+							<a href="https://github.com/AvishkaBS" class="social-icon"><i class="fa fa-github"></i></a>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp; Damindu Pahasara &nbsp;
+							<a href="https://www.linkedin.com/in/mkdpahasara/" class="social-icon"><i class="fa fa-linkedin"></i></a>
+							<a href="https://github.com/MKDpahasara" class="social-icon"><i class="fa fa-github"></i></a>
+						</div>
+					</div>
+				</div><!--/.footer-copyright-->
+			</div><!--/.container-->
+
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
+        </footer><!--/.contact-->
+		<!--contact end-->
+
+
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+		<script src="static/assets/js/jquery.js"></script>
+        
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+		
+		<!--bootstrap.min.js-->
+        <script src="static/assets/js/bootstrap.min.js"></script>
+		
+		<!-- bootsnav js -->
+		<script src="static/assets/js/bootsnav.js"></script>
+
+		<!--owl.carousel.js-->
+        <script src="static/assets/js/owl.carousel.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="static/assets/js/custom.js"></script>
+
+		<script>
+			// Use Jinja2 syntax to embed the series IDs in the script tag
+			var seriesIds = JSON.parse('{{ series_data_array | tojson | safe }}');
+			// Now 'movieIds' is a JavaScript array containing the movie IDs
+		</script>
+
+		<script src="static/assets/js/script_tv.js"></script>
+        
+		<script>
+			function goBack() {
+				window.history.go(-1);
+			}
+		</script>
+    </body>
+	
+</html>
